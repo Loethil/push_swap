@@ -12,8 +12,15 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdio.h>
+# include <stdlib.h>
 
 int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
 
+typedef struct s_data
+{
+	int	*pilea;
+	int	*pileb;
+
+}		t_data;
 #endif

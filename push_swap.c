@@ -11,25 +11,34 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	*createpilea(int argc, char **argv, t_data *try)
 {
 	int	i;
 	int	j;
-	int	tab[argc];
 
 	i = 0;
-	j = 1;
+	j = 0;
 	while (i < argc - 1)
 	{
-		tab[i] = ft_atoi(argv[j]);
+		try->pilea[i] = ft_atoi(argv[j + 1]);
 		j++;
 		i++;
 	}
 	i = 0;
 	while (i < argc - 1)
 	{
-		printf("case %d = %d\n", i, tab[i]);
+		printf("case %d = %d\n", i, try->pilea[i]);
 		i++;
 	}
+	return (try->pilea);
+}
+int	main(int argc, char **argv)
+{
+	t_data	try;
+	try.pilea = malloc (argc * sizeof(int));
+	if (!try.pilea)
+		return (0);
+	try.pilea = createpilea(argc, argv, &try);
+	free (try.pilea);
 	return (0);
 }
