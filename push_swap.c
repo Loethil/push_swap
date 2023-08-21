@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+/*probleme atoi nombre trop grand a regler*/
 int	*createpilea(int argc, char **argv, t_data *try)
 {
 	int	i;
