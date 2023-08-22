@@ -12,34 +12,58 @@
 #include "push_swap.h"
 
 /*probleme atoi nombre trop grand a regler*/
-int	*createpilea(int argc, char **argv, t_data *try)
+int	*create_pile_a(char **argv, t_data *try)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (i < argc - 1)
+	while (i < try->pilelen)
 	{
-		try->pilea[i] = ft_atoi(argv[j + 1]);
+		try->pile_a[i] = ft_atoi(argv[j + 1]);
 		j++;
 		i++;
 	}
 	i = 0;
-	while (i < argc - 1)
+	while (i < try->pilelen)
 	{
-		printf("case %d = %d\n", i, try->pilea[i]);
+		printf("pile_a %d = %d    ", i, try->pile_a[i]);
+		printf("pile_b %d = %d\n", i, try->pile_b[i]);
 		i++;
 	}
-	return (try->pilea);
+	printf("\n");
+	return (try->pile_a);
+}
+
+void	changes(t_data *try)
+{
+	int	i;
+
+	i = 0;
+	while (i < try->pilelen)
+	{
+		printf("pile_a %d = %d    ", i, try->pile_a[i]);
+		printf("pile_b %d = %d\n", i, try->pile_b[i]);
+		i++;
+	}
+	printf("\n");
 }
 int	main(int argc, char **argv)
 {
 	t_data	try;
-	try.pilea = malloc (argc * sizeof(int));
-	if (!try.pilea)
+
+	try.pilelen = argc - 1;
+	try.pile_a = malloc (try.pilelen * sizeof(int));
+	try.pile_b = malloc (try.pilelen * sizeof(int));
+	if (!try.pile_a || !try.pile_b)
 		return (0);
-	try.pilea = createpilea(argc, argv, &try);
-	free (try.pilea);
+	try.pile_a = create_pile_a(argv, &try);
+	push_b(&try);
+	changes(&try);
+	push_a(&try);
+	changes(&try);
+	free (try.pile_a);
+	free (try.pile_b);
 	return (0);
 }

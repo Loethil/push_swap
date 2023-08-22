@@ -14,13 +14,22 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-int	ft_atoi(const char *str);
-int	ft_isdigit(int c);
-
 typedef struct s_data
 {
-	int	*pilea;
-	int	*pileb;
+	int	*pile_a;
+	int	*pile_b;
+	int	pilelen;
 
 }		t_data;
+
+int	ft_atoi(const char *str);
+int	ft_isdigit(int c);
+void	swap_a(t_data *try);
+void	swap_b(t_data *try);
+void	swap_s(t_data *try);
+void	push_b(t_data *try);
+void	push_a(t_data *try);
+void	go_up(t_data *try, int	*pile);
+void	go_down(t_data *try, int *pile);
+
 #endif
