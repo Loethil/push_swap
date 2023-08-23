@@ -1,73 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbatteux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 15:11:21 by mbatteux          #+#    #+#             */
-/*   Updated: 2023/08/22 15:11:22 by mbatteux         ###   ########.fr       */
+/*   Created: 2023/08/23 13:13:40 by mbatteux          #+#    #+#             */
+/*   Updated: 2023/08/23 13:13:41 by mbatteux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	push_a(t_data *try)
-{
-	if (try->pile_b == NULL)
-		return ;
-	go_down(try, try->pile_a);
-	if (try->pile_a[0] == 0)
-	{
-		try->pile_a[0] = try->pile_b[0];
-		try->pile_b[0] = 0;
-	}
-	go_up(try, try->pile_b);
-}
-
-void	push_b(t_data *try)
-{
-	if (try->pile_a == NULL)
-		return ;
-	go_down(try, try->pile_b);
-	if (try->pile_b[0] == 0)
-	{
-		try->pile_b[0] = try->pile_a[0];
-		try->pile_a[0] = 0;
-	}
-	go_up(try, try->pile_a);
-}
-
-void	go_down(t_data *try, int *pile)
+void	rotate_a(t_data *try, int *pile)
 {
 	int	i;
+	int	c;
 
 	i = 0;
-	while (i < try->pilelen)
+	while (i < try->pilelen - 1)
 		i++;
 	if (i > try->pilelen)
 		return ;
+	c = pile[i];
 	while (i > 0)
 	{
 		pile[i] = pile[i - 1];
 		i--;
 	}
-	pile[0] = 0;
+	pile[0] = c;
 }
-
-void	go_up(t_data *try, int	*pile)
+//-1 car argc compte de 1 a 6 et i de 0 a 5
+void	rotate_b(t_data *try, int *pile)
 {
 	int	i;
+	int	c;
 
 	i = 0;
 	while (i < try->pilelen - 1)
 		i++;
 	if (i > try->pilelen)
 		return ;
-	i = 0;
-	while (i < try->pilelen - 1)
+	c = pile[i];
+	while (i > 0)
 	{
-		pile[i] = pile[i + 1];
-		i++;
+		pile[i] = pile[i - 1];
+		i--;
 	}
-	pile[i] = 0;
+	pile[0] = c;
+}
+void	rotate_r(t_data *try, int *pile_a, int *pile_b)
+{
+	rotate_a(try, pile_a);
+	rotate_b(try, pile_b);
 }

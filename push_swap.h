@@ -31,5 +31,12 @@ void	push_b(t_data *try);
 void	push_a(t_data *try);
 void	go_up(t_data *try, int	*pile);
 void	go_down(t_data *try, int *pile);
+void	rotate_a(t_data *try, int *pile);
+void	rotate_b(t_data *try, int *pile);
+void	rotate_r(t_data *try, int *pile_a, int *pile_b);
+void	reverse_rotate_r(t_data *try, int *pile_a, int *pile_b);
+void	reverse_rotate_b(t_data *try, int *pile);
+void	reverse_rotate_a(t_data *try, int *pile);
+
 
 #endif

@@ -15,7 +15,9 @@ NAME = push_swap
 CCC = push_swap.c\
 	push_swap_utils.c\
 	swap.c\
-	push.c
+	push.c\
+	rotate.c\
+	reverse_rotate.c
 
 OOO = $(CCC:.c=.o)
 
