@@ -13,8 +13,6 @@
 
 void	push_a(t_data *try)
 {
-	if (try->pile_b == NULL)
-		return ;
 	go_down(try, try->pile_a);
 	if (try->pile_a[0] == 0)
 	{
@@ -26,8 +24,6 @@ void	push_a(t_data *try)
 
 void	push_b(t_data *try)
 {
-	if (try->pile_a == NULL)
-		return ;
 	go_down(try, try->pile_b);
 	if (try->pile_b[0] == 0)
 	{

@@ -18,10 +18,10 @@ int	*create_pile_a(char **argv, t_data *try)
 	int	j;
 
 	i = 0;
-	j = 0;
+	j = 1;
 	while (i < try->pilelen)
 	{
-		try->pile_a[i] = ft_atoi(argv[j + 1]);
+		try->pile_a[i] = ft_atoi(argv[j]);
 		j++;
 		i++;
 	}
@@ -52,25 +52,9 @@ void	changes(t_data *try)
 
 void	test(t_data *try)
 {
-	push_b(try);
-	printf("push_b\n");
-	changes(try);
-	rotate_b(try, try->pile_b);
-	printf("rotate_b\n");
-	changes(try);
 	push_a(try);
 	printf("push_a\n");
 	changes(try);
-	rotate_a(try, try->pile_a);
-	printf("rotate_a\n");
-	changes(try);
-	rotate_r(try, try->pile_a, try->pile_b);
-	printf("rotate_r\n");
-	changes(try);
-	reverse_rotate_r(try, try->pile_a, try->pile_b);
-	printf("reverse_rotate_r\n");
-	changes(try);
-
 }
 
 int	main(int argc, char **argv)

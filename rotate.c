@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	rotate_a(t_data *try, int *pile)
+void	rotate_a(t_data *try)
 {
 	int	i;
 	int	c;
@@ -21,16 +21,16 @@ void	rotate_a(t_data *try, int *pile)
 		i++;
 	if (i > try->pilelen)
 		return ;
-	c = pile[i];
+	c = try->pile_a[i];
 	while (i > 0)
 	{
-		pile[i] = pile[i - 1];
+		try->pile_a[i] = try->pile_a[i - 1];
 		i--;
 	}
-	pile[0] = c;
+	try->pile_a[0] = c;
 }
 //-1 car argc compte de 1 a 6 et i de 0 a 5
-void	rotate_b(t_data *try, int *pile)
+void	rotate_b(t_data *try)
 {
 	int	i;
 	int	c;
@@ -40,16 +40,16 @@ void	rotate_b(t_data *try, int *pile)
 		i++;
 	if (i > try->pilelen)
 		return ;
-	c = pile[i];
+	c = try->pile_b[i];
 	while (i > 0)
 	{
-		pile[i] = pile[i - 1];
+		try->pile_b[i] = try->pile_b[i - 1];
 		i--;
 	}
-	pile[0] = c;
+	try->pile_b[0] = c;
 }
-void	rotate_r(t_data *try, int *pile_a, int *pile_b)
+void	rotate_r(t_data *try)
 {
-	rotate_a(try, pile_a);
-	rotate_b(try, pile_b);
+	rotate_a(try);
+	rotate_b(try);
 }
