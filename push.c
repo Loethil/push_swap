@@ -44,7 +44,7 @@ void	go_down(t_liste *pile, int count)
 		return ;
 	while (i > 0)
 	{
-		pile[i] = pile[i - 1];
+		pile[i].value = pile[i - 1].value;
 		i--;
 	}
 	pile[0].value = 0;

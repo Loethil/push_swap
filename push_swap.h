@@ -14,13 +14,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-// typedef struct s_data
-// {
-// 	int	*pile_a;
-// 	int	*pile_b;
-// 	int	pilelen;
-// }		t_data;
-
 typedef struct s_liste
 {
 	int	value; // valeur reel grace a argv

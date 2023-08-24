@@ -19,12 +19,12 @@ void	changes(t_liste *pile_a, t_liste *pile_b, int count)
 	i = 0;
 	while (i < count)
 	{
-		printf("[%d]   [%d]",pile_a[i].value, pile_b[i].value);
+		printf("[%d]\t\t[%d]",pile_a[i].value, pile_b[i].value);
 		printf("\n");
 		i++;
 	}
-	printf(" _     _\n");
-	printf(" a     b\n");
+	printf(" _\t\t _\n");
+	printf(" a\t\t b\n");
 }
 
 t_liste	*create_pile_a(char **argv, int count, t_liste *pile_a)
@@ -51,15 +51,12 @@ void	test(t_liste *pile_a, t_liste *pile_b, int count)
 	printf("push_b\n\n");
 	changes(pile_a, pile_b, count);
 	printf("\n");
-	reverse_rotate_b(pile_b, count);
-	printf("rotate_b\n\n");
+	push_b(pile_a, pile_b, count);
+	printf("push_b\n\n");
 	changes(pile_a, pile_b, count);
 	printf("\n");
-	reverse_rotate_a(pile_a, count);
-	printf("rotate_a\n\n");
-	changes(pile_a, pile_b, count);
-	printf("rotate_r\n\n");
-	reverse_rotate_r(pile_a, pile_b, count);
+	push_a(pile_a, pile_b, count);
+	printf("push_a\n\n");
 	changes(pile_a, pile_b, count);
 	printf("\n");
 }
