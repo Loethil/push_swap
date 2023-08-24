@@ -11,59 +11,59 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	push_a(t_data *try)
+void	push_a(t_liste *pile_a, t_liste *pile_b, int count)
 {
-	go_down(try, try->pile_a);
-	if (try->pile_a[0] == 0)
+	go_down(pile_a, count);
+	if (pile_a[0].value == 0)
 	{
-		try->pile_a[0] = try->pile_b[0];
-		try->pile_b[0] = 0;
+		pile_a[0].value = pile_b[0].value;
+		pile_b[0].value = 0;
 	}
-	go_up(try, try->pile_b);
+	go_up(pile_b, count);
 }
 
-void	push_b(t_data *try)
+void	push_b(t_liste *pile_a, t_liste *pile_b, int count)
 {
-	go_down(try, try->pile_b);
-	if (try->pile_b[0] == 0)
+	go_down(pile_b, count);
+	if (pile_b[0].value == 0)
 	{
-		try->pile_b[0] = try->pile_a[0];
-		try->pile_a[0] = 0;
+		pile_b[0].value = pile_a[0].value;
+		pile_a[0].value = 0;
 	}
-	go_up(try, try->pile_a);
+	go_up(pile_a, count);
 }
 
-void	go_down(t_data *try, int *pile)
+void	go_down(t_liste *pile, int count)
 {
 	int	i;
 
 	i = 0;
-	while (i < try->pilelen)
+	while (i < count)
 		i++;
-	if (i > try->pilelen)
+	if (i > count)
 		return ;
 	while (i > 0)
 	{
 		pile[i] = pile[i - 1];
 		i--;
 	}
-	pile[0] = 0;
+	pile[0].value = 0;
 }
 
-void	go_up(t_data *try, int	*pile)
+void	go_up(t_liste *pile, int count)
 {
 	int	i;
 
 	i = 0;
-	while (i < try->pilelen - 1)
+	while (i < count - 1)
 		i++;
-	if (i > try->pilelen)
+	if (i > count)
 		return ;
 	i = 0;
-	while (i < try->pilelen - 1)
+	while (i < count - 1)
 	{
 		pile[i] = pile[i + 1];
 		i++;
 	}
-	pile[i] = 0;
+	pile[i].value = 0;
 }

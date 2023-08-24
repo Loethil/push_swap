@@ -14,28 +14,33 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct s_data
+// typedef struct s_data
+// {
+// 	int	*pile_a;
+// 	int	*pile_b;
+// 	int	pilelen;
+// }		t_data;
+
+typedef struct s_liste
 {
-	int	*pile_a;
-	int	*pile_b;
-	int	pilelen;
-}		t_data;
+	int	value; // valeur reel grace a argv
+	int	place; // postions dans la liste
+}		t_liste;
 
 int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
-void	swap_a(t_data *try);
-void	swap_b(t_data *try);
-void	swap_s(t_data *try);
-void	push_b(t_data *try);
-void	push_a(t_data *try);
-void	go_up(t_data *try, int	*pile);
-void	go_down(t_data *try, int *pile);
-void	rotate_a(t_data *try);
-void	rotate_b(t_data *try);
-void	rotate_r(t_data *try);
-void	reverse_rotate_r(t_data *try);
-void	reverse_rotate_b(t_data *try);
-void	reverse_rotate_a(t_data *try);
-
+void	push_a(t_liste *pile_a, t_liste *pile_b, int count);
+void	push_b(t_liste *pile_a, t_liste *pile_b, int count);
+void	go_down(t_liste *pile, int count);
+void	go_up(t_liste *pile, int count);
+void	swap_a(t_liste *pile_a);
+void	swap_b(t_liste *pile_b);
+void	swap_s(t_liste *pile_a, t_liste *pile_b);
+void	rotate_a(t_liste *pile_a, int count);
+void	rotate_b(t_liste *pile_b, int count);
+void	rotate_r(t_liste *pile_a, t_liste *pile_b, int count);
+void	reverse_rotate_a(t_liste *pile_a, int count);
+void	reverse_rotate_b(t_liste *pile_b, int count);
+void	reverse_rotate_r(t_liste *pile_a, t_liste *pile_b, int count);
 
 #endif

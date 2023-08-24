@@ -11,33 +11,33 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	swap_a(t_data *try)
+void	swap_a(t_liste *pile_a)
 {
 	int	c;
 
-	c = try->pile_a[1];
-	try->pile_a[1] = try->pile_a[0];
-	try->pile_a[0] = c;
+	c = pile_a[1].value;
+	pile_a[1].value = pile_a[0].value;
+	pile_a[0].value = c;
 }
 
-void	swap_b(t_data *try)
+void	swap_b(t_liste *pile_b)
 {
 	int	c;
 
-	c = try->pile_b[1];
-	try->pile_b[1] = try->pile_b[0];
-	try->pile_b[0] = c;
+	c = pile_b[1].value;
+	pile_b[1].value = pile_b[0].value;
+	pile_b[0].value = c;
 }
 
-void	swap_s(t_data *try)
+void	swap_s(t_liste *pile_a, t_liste *pile_b)
 {
 	int	c;
 	int	d;
 
-	d = try->pile_b[1];
-	c = try->pile_a[1];
-	try->pile_a[1] = try->pile_a[0];
-	try->pile_b[1] = try->pile_b[0];
-	try->pile_a[0] = c;
-	try->pile_b[0] = d;
+	d = pile_b[1].value;
+	c = pile_a[1].value;
+	pile_a[1].value = pile_a[0].value;
+	pile_b[1].value = pile_b[0].value;
+	pile_a[0].value = c;
+	pile_b[0].value = d;
 }

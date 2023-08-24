@@ -12,63 +12,69 @@
 #include "push_swap.h"
 
 /*probleme atoi nombre trop grand a regler*/
-int	*create_pile_a(char **argv, t_data *try)
+void	changes(t_liste *pile_a, t_liste *pile_b, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		printf("[%d]   [%d]",pile_a[i].value, pile_b[i].value);
+		printf("\n");
+		i++;
+	}
+	printf(" _     _\n");
+	printf(" a     b\n");
+}
+
+t_liste	*create_pile_a(char **argv, int count, t_liste *pile_a)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 1;
-	while (i < try->pilelen)
+	while (i < count)
 	{
-		try->pile_a[i] = ft_atoi(argv[j]);
+		pile_a[i].value = ft_atoi(argv[j]);
 		j++;
 		i++;
 	}
-	i = 0;
-	while (i < try->pilelen)
-	{
-		printf("pile_a %d = %d    ", i, try->pile_a[i]);
-		printf("pile_b %d = %d\n", i, try->pile_b[i]);
-		i++;
-	}
-	printf("\n");
-	return (try->pile_a);
+	return (pile_a);
 }
 
-void	changes(t_data *try)
-{
-	int	i;
 
-	i = 0;
-	while (i < try->pilelen)
-	{
-		printf("pile_a %d = %d    ", i, try->pile_a[i]);
-		printf("pile_b %d = %d\n", i, try->pile_b[i]);
-		i++;
-	}
+void	test(t_liste *pile_a, t_liste *pile_b, int count)
+{
 	printf("\n");
-}
-
-void	test(t_data *try)
-{
-	push_a(try);
-	printf("push_a\n");
-	changes(try);
+	push_b(pile_a, pile_b, count);
+	printf("push_b\n\n");
+	changes(pile_a, pile_b, count);
+	printf("\n");
+	reverse_rotate_b(pile_b, count);
+	printf("rotate_b\n\n");
+	changes(pile_a, pile_b, count);
+	printf("\n");
+	reverse_rotate_a(pile_a, count);
+	printf("rotate_a\n\n");
+	changes(pile_a, pile_b, count);
+	printf("rotate_r\n\n");
+	reverse_rotate_r(pile_a, pile_b, count);
+	changes(pile_a, pile_b, count);
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
 {
-	t_data	try;
+	t_liste	*pile_a;
+	t_liste *pile_b;
+	int	count;
 
-	try.pilelen = argc - 1;
-	try.pile_a = malloc (try.pilelen * sizeof(int));
-	try.pile_b = malloc (try.pilelen * sizeof(int));
-	if (!try.pile_a || !try.pile_b)
-		return (0);
-	try.pile_a = create_pile_a(argv, &try);
-	test(&try);
-	// free (try.pile_a);
-	// free (try.pile_b);
+	count = argc - 1;
+	pile_a = malloc((argc - 1) * sizeof(t_liste));
+	pile_b = malloc((argc - 1) * sizeof(t_liste));
+	pile_a = create_pile_a(argv, count, pile_a);
+	changes(pile_a, pile_b, count);
+	test(pile_a, pile_b, count);
 	return (0);
 }

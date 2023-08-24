@@ -11,45 +11,45 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	rotate_a(t_data *try)
+void	rotate_a(t_liste *pile_a, int count)
 {
 	int	i;
 	int	c;
 
 	i = 0;
-	while (i < try->pilelen - 1)
+	while (i < count - 1)
 		i++;
-	if (i > try->pilelen)
+	if (i > count)
 		return ;
-	c = try->pile_a[i];
+	c = pile_a[i].value;
 	while (i > 0)
 	{
-		try->pile_a[i] = try->pile_a[i - 1];
+		pile_a[i].value = pile_a[i - 1].value;
 		i--;
 	}
-	try->pile_a[0] = c;
+	pile_a[0].value = c;
 }
 //-1 car argc compte de 1 a 6 et i de 0 a 5
-void	rotate_b(t_data *try)
+void	rotate_b(t_liste *pile_b, int count)
 {
 	int	i;
 	int	c;
 
 	i = 0;
-	while (i < try->pilelen - 1)
+	while (i < count - 1)
 		i++;
-	if (i > try->pilelen)
+	if (i > count)
 		return ;
-	c = try->pile_b[i];
+	c = pile_b[i].value;
 	while (i > 0)
 	{
-		try->pile_b[i] = try->pile_b[i - 1];
+		pile_b[i].value = pile_b[i - 1].value;
 		i--;
 	}
-	try->pile_b[0] = c;
+	pile_b[0].value = c;
 }
-void	rotate_r(t_data *try)
+void	rotate_r(t_liste *pile_a, t_liste *pile_b, int count)
 {
-	rotate_a(try);
-	rotate_b(try);
+	rotate_a(pile_a, count);
+	rotate_b(pile_b, count);
 }
