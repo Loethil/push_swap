@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+//permet de prendre la premiere case de b pour l'envoyer a pile_a
 void	push_a(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	go_down(pile_a, count);
@@ -21,7 +22,7 @@ void	push_a(t_liste *pile_a, t_liste *pile_b, int count)
 	}
 	go_up(pile_b, count);
 }
-
+//permet de prendre la premiere case de a pour l'envoyer a pile_b
 void	push_b(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	go_down(pile_b, count);
@@ -32,7 +33,7 @@ void	push_b(t_liste *pile_a, t_liste *pile_b, int count)
 	}
 	go_up(pile_a, count);
 }
-
+//permet de faire descendre les maillons
 void	go_down(t_liste *pile, int count)
 {
 	int	i;
@@ -49,7 +50,7 @@ void	go_down(t_liste *pile, int count)
 	}
 	pile[0].value = 0;
 }
-
+//permet de monterles maillons
 void	go_up(t_liste *pile, int count)
 {
 	int	i;

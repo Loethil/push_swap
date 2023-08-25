@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+//Intervertit les 2 premiers éléments au sommet de la pile a. Ne fait rien s’il n’y en a qu’un ou aucun.
 void	swap_a(t_liste *pile_a)
 {
 	int	c;
@@ -20,6 +21,7 @@ void	swap_a(t_liste *pile_a)
 	pile_a[0].value = c;
 }
 
+// Intervertit les 2 premiers éléments au sommet de la pile b. Ne fait rien s’il n’y en a qu’un ou aucun.
 void	swap_b(t_liste *pile_b)
 {
 	int	c;
@@ -29,6 +31,7 @@ void	swap_b(t_liste *pile_b)
 	pile_b[0].value = c;
 }
 
+//sa et sb en même temps
 void	swap_s(t_liste *pile_a, t_liste *pile_b)
 {
 	int	c;

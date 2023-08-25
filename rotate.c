@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+//Décale d’une position vers le haut tous les élements de la pile a. Le premier élément devient le dernier.
 void	rotate_a(t_liste *pile_a, int count)
 {
 	int	i;
@@ -30,6 +31,7 @@ void	rotate_a(t_liste *pile_a, int count)
 	pile_a[0].value = c;
 }
 //-1 car argc compte de 1 a 6 et i de 0 a 5
+//Décale d’une position vers le haut tous les élements de la pile b. Le premier élément devient le dernier.
 void	rotate_b(t_liste *pile_b, int count)
 {
 	int	i;
@@ -48,6 +50,7 @@ void	rotate_b(t_liste *pile_b, int count)
 	}
 	pile_b[0].value = c;
 }
+//ra et rb en même temps.
 void	rotate_r(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	rotate_a(pile_a, count);

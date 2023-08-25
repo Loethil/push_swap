@@ -43,7 +43,6 @@ t_liste	*create_pile_a(char **argv, int count, t_liste *pile_a)
 	return (pile_a);
 }
 
-
 void	test(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	printf("\n");
