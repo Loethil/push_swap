@@ -14,23 +14,25 @@
 void	pa(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	go_down(pile_a, count);
-	if (pile_a[0].value == 0)
+	if (pile_a[0].place == 0)
 	{
-		pile_a[0].value = pile_b[0].value;
-		pile_b[0].value = 0;
+		pile_a[0].place = pile_b[0].place;
+		pile_b[0].place = 0;
 	}
 	go_up(pile_b, count);
+	printf("pa\n");
 }
 
 void	pb(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	go_down(pile_b, count);
-	if (pile_b[0].value == 0)
+	if (pile_b[0].place == 0)
 	{
-		pile_b[0].value = pile_a[0].value;
-		pile_a[0].value = 0;
+		pile_b[0].place = pile_a[0].place;
+		pile_a[0].place = 0;
 	}
 	go_up(pile_a, count);
+	printf("pb\n");
 }
 //permet de faire descendre les maillons
 void	go_down(t_liste *pile, int count)
@@ -44,10 +46,10 @@ void	go_down(t_liste *pile, int count)
 		return ;
 	while (i > 0)
 	{
-		pile[i].value = pile[i - 1].value;
+		pile[i].place = pile[i - 1].place;
 		i--;
 	}
-	pile[0].value = 0;
+	pile[0].place = 0;
 }
 //permet de monterles maillons
 void	go_up(t_liste *pile, int count)
@@ -65,5 +67,5 @@ void	go_up(t_liste *pile, int count)
 		pile[i] = pile[i + 1];
 		i++;
 	}
-	pile[i].value = 0;
+	pile[i].place = 0;
 }

@@ -11,22 +11,33 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	algo_3(t_liste *pile_a, t_liste *pile_b)
+int	diff(int a, int b)
+{
+	int	res;
+
+	res = a - b;
+	return (res);
+}
+
+void	algo_3(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	int	fst;
 	int	scn;
 
-	fst = diff(pile_a[0].place, pile_a[1].place, res);
-	scn = diff(pile_a[2].place, pile_a[1].place, res);
-	if (fst == -1 && scn == 1)
+	(void)pile_b;
+	fst = diff(pile_a[1].place, pile_a[0].place);
+	scn = diff(pile_a[1].place, pile_a[2].place);
+	if (scn == 1)
 	{
 		sa(pile_a);
-		rra(pile_a);
+		if (fst == -1)
+			rra(pile_a, count);		if (fst == 2)
+			ra(pile_a, count);
 	}
-}
-
-int	diff(int a, int b, int res)
-{
-	res = a - b;
-	return (res);
+	else if (fst == 1 && scn == 2)
+		rra(pile_a, count);
+	else if (fst == -1 && scn == -2)
+		sa(pile_a);
+	else if (fst == -2 && scn == -1)
+		ra(pile_a, count);
 }

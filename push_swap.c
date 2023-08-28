@@ -70,23 +70,18 @@ void	replace_number(t_liste *pile_a, int count)
 	}
 }
 
-void	test(t_liste *pile_a, t_liste *pile_b, int count)
-{
-	printf("\n");
-	pb(pile_a, pile_b, count);
-	printf("pb\n\n");
-	changes(pile_a, pile_b, count);
-	printf("\n");
-	pb(pile_a, pile_b, count);
-	printf("pb\n\n");
-	changes(pile_a, pile_b, count);
-	printf("\n");
-	pa(pile_a, pile_b, count);
-	printf("pa\n\n");
-	changes(pile_a, pile_b, count);
-	printf("\n");
-}
-
+// void	test(t_liste *pile_a, t_liste *pile_b, int count)
+// {
+// 	printf("\n");
+// 	sa(pile_a);
+// 	printf("sa\n\n");
+// 	changes(pile_a, pile_b, count);
+// 	printf("\n");
+// 	rra(pile_a, count);
+// 	printf("rra\n\n");
+// 	changes(pile_a, pile_b, count);
+// 	printf("\n");
+// }
 int	main(int argc, char **argv)
 {
 	t_liste	*pile_a;
@@ -98,6 +93,9 @@ int	main(int argc, char **argv)
 	pile_b = malloc((argc - 1) * sizeof(t_liste));
 	pile_a = create_pile_a(argv, count, pile_a);
 	replace_number(pile_a, count);
+	changes(pile_a, pile_b, count);	
+	if(count == 3)
+		algo_3(pile_a, pile_b, count);
 	changes(pile_a, pile_b, count);
 	// test(pile_a, pile_b, count);
 	return (0);
