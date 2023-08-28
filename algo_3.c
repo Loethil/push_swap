@@ -31,7 +31,8 @@ void	algo_3(t_liste *pile_a, t_liste *pile_b, int count)
 	{
 		sa(pile_a);
 		if (fst == -1)
-			rra(pile_a, count);		if (fst == 2)
+			rra(pile_a, count);
+		if (fst == 2)
 			ra(pile_a, count);
 	}
 	else if (fst == 1 && scn == 2)
