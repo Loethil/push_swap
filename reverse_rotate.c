@@ -11,7 +11,12 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
+<<<<<<< HEAD
 void	ra(t_liste *pile_a, int count)
+=======
+//Décale d’une position vers le bas tous les élements de la pile a. Le dernier élément devient le premier.
+void	reverse_rotate_a(t_liste *pile_a, int count)
+>>>>>>> 422a7dad2eeda4eef499369c3c336283e7119592
 {
 	int	i;
 	int	c;
@@ -31,7 +36,12 @@ void	ra(t_liste *pile_a, int count)
 	pile_a[i].value = c;
 }
 //-1 car argc compte de 1 a 6 et i de 0 a 5
+<<<<<<< HEAD
 void	rb(t_liste *pile_b, int count)
+=======
+//Décale d’une position vers le bas tous les élements de la pile b. Le dernier élément devient le premier.
+void	reverse_rotate_b(t_liste *pile_b, int count)
+>>>>>>> 422a7dad2eeda4eef499369c3c336283e7119592
 {
 	int	i;
 	int	c;
@@ -50,7 +60,12 @@ void	rb(t_liste *pile_b, int count)
 	}
 	pile_b[i].value = c;
 }
+<<<<<<< HEAD
 void	rr(t_liste *pile_a, t_liste *pile_b, int count)
+=======
+//rra et rrb en même temps.
+void	reverse_rotate_r(t_liste *pile_a, t_liste *pile_b, int count)
+>>>>>>> 422a7dad2eeda4eef499369c3c336283e7119592
 {
 	ra(pile_a, count);
 	rb(pile_b, count);
