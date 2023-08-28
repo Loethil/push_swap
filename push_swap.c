@@ -43,7 +43,6 @@ t_liste	*create_pile_a(char **argv, int count, t_liste *pile_a)
 	return (pile_a);
 }
 
-<<<<<<< HEAD
 void	replace_number(t_liste *pile_a, int count)
 {
 	int	lower;
@@ -71,8 +70,6 @@ void	replace_number(t_liste *pile_a, int count)
 	}
 }
 
-=======
->>>>>>> 422a7dad2eeda4eef499369c3c336283e7119592
 void	test(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	printf("\n");

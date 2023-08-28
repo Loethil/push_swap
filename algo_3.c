@@ -9,8 +9,9 @@
 /*   Updated: 2023/08/28 13:58:54 by mbatteux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
 
-void	algo_3(t_liste pile_a, t_liste pile_b)
+void	algo_3(t_liste *pile_a, t_liste *pile_b)
 {
 	int	fst;
 	int	scn;
