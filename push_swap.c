@@ -19,7 +19,7 @@ void	changes(t_liste *pile_a, t_liste *pile_b, int count)
 	i = 0;
 	while (i < count)
 	{
-		printf("[%d]\t\t[%d]",pile_a[i].value, pile_b[i].value);
+		printf("[%d]\t\t[%d]",pile_a[i].place, pile_b[i].place);
 		printf("\n");
 		i++;
 	}
@@ -43,20 +43,46 @@ t_liste	*create_pile_a(char **argv, int count, t_liste *pile_a)
 	return (pile_a);
 }
 
+void	replace_number(t_liste *pile_a, int count)
+{
+	int	lower;
+	int	i;
+	int	pos;
+	int	place;
+
+	pos = 1;
+	while(pos <= count)
+	{
+		i = -1;
+		lower = 2147483647;
+		while(++i < count)
+		{
+			if(pile_a[i].value < lower)
+			{
+				lower = pile_a[i].value;
+				place = i;
+				i = -1;
+			}
+		}
+		pile_a[place].place = pos;
+		pile_a[place].value = 2147483647;
+		pos++;
+	}
+}
 
 void	test(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	printf("\n");
-	push_b(pile_a, pile_b, count);
-	printf("push_b\n\n");
+	pb(pile_a, pile_b, count);
+	printf("pb\n\n");
 	changes(pile_a, pile_b, count);
 	printf("\n");
-	push_b(pile_a, pile_b, count);
-	printf("push_b\n\n");
+	pb(pile_a, pile_b, count);
+	printf("pb\n\n");
 	changes(pile_a, pile_b, count);
 	printf("\n");
-	push_a(pile_a, pile_b, count);
-	printf("push_a\n\n");
+	pa(pile_a, pile_b, count);
+	printf("pa\n\n");
 	changes(pile_a, pile_b, count);
 	printf("\n");
 }
@@ -71,7 +97,8 @@ int	main(int argc, char **argv)
 	pile_a = malloc((argc - 1) * sizeof(t_liste));
 	pile_b = malloc((argc - 1) * sizeof(t_liste));
 	pile_a = create_pile_a(argv, count, pile_a);
+	replace_number(pile_a, count);
 	changes(pile_a, pile_b, count);
-	test(pile_a, pile_b, count);
+	// test(pile_a, pile_b, count);
 	return (0);
 }

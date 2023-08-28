@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	rotate_a(t_liste *pile_a, int count)
+void	ra(t_liste *pile_a, int count)
 {
 	int	i;
 	int	c;
@@ -30,7 +30,7 @@ void	rotate_a(t_liste *pile_a, int count)
 	pile_a[0].value = c;
 }
 //-1 car argc compte de 1 a 6 et i de 0 a 5
-void	rotate_b(t_liste *pile_b, int count)
+void	rb(t_liste *pile_b, int count)
 {
 	int	i;
 	int	c;
@@ -48,8 +48,8 @@ void	rotate_b(t_liste *pile_b, int count)
 	}
 	pile_b[0].value = c;
 }
-void	rotate_r(t_liste *pile_a, t_liste *pile_b, int count)
+void	rr(t_liste *pile_a, t_liste *pile_b, int count)
 {
-	rotate_a(pile_a, count);
-	rotate_b(pile_b, count);
+	ra(pile_a, count);
+	rb(pile_b, count);
 }

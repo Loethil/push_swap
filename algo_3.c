@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   algo_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbatteux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 14:28:13 by mbatteux          #+#    #+#             */
-/*   Updated: 2023/08/22 14:28:15 by mbatteux         ###   ########.fr       */
+/*   Created: 2023/08/28 13:58:52 by mbatteux          #+#    #+#             */
+/*   Updated: 2023/08/28 13:58:54 by mbatteux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
 
-void	sa(t_liste *pile_a)
+void	algo_3(t_liste pile_a, t_liste pile_b)
 {
-	int	c;
+	int	fst;
+	int	scn;
 
-	c = pile_a[1].value;
-	pile_a[1].value = pile_a[0].value;
-	pile_a[0].value = c;
+	fst = diff(pile_a[0].place, pile_a[1].place, res);
+	scn = diff(pile_a[2].place, pile_a[1].place, res);
+	if (fst == -1 && scn == 1)
+	{
+		sa(pile_a);
+		rra(pile_a);
+	}
 }
 
-void	sb(t_liste *pile_b)
+int	diff(int a, int b, int res)
 {
-	int	c;
-
-	c = pile_b[1].value;
-	pile_b[1].value = pile_b[0].value;
-	pile_b[0].value = c;
-}
-
-void	ss(t_liste *pile_a, t_liste *pile_b)
-{
-	sa(pile_a);
-	sb(pile_b);
+	res = a - b;
+	return (res);
 }

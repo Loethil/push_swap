@@ -22,18 +22,19 @@ typedef struct s_liste
 
 int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
-void	push_a(t_liste *pile_a, t_liste *pile_b, int count);
-void	push_b(t_liste *pile_a, t_liste *pile_b, int count);
 void	go_down(t_liste *pile, int count);
 void	go_up(t_liste *pile, int count);
-void	swap_a(t_liste *pile_a);
-void	swap_b(t_liste *pile_b);
-void	swap_s(t_liste *pile_a, t_liste *pile_b);
-void	rotate_a(t_liste *pile_a, int count);
-void	rotate_b(t_liste *pile_b, int count);
-void	rotate_r(t_liste *pile_a, t_liste *pile_b, int count);
-void	reverse_rotate_a(t_liste *pile_a, int count);
-void	reverse_rotate_b(t_liste *pile_b, int count);
-void	reverse_rotate_r(t_liste *pile_a, t_liste *pile_b, int count);
+void	replace_number(t_liste *pile_a, int count);
+void	sa(t_liste *pile_a);
+void	sb(t_liste *pile_b);
+void	ss(t_liste *pile_a, t_liste *pile_b);
+void	pa(t_liste *pile_a, t_liste *pile_b, int count);
+void	pb(t_liste *pile_a, t_liste *pile_b, int count);
+void	ra(t_liste *pile_a, int count);
+void	rb(t_liste *pile_b, int count);
+void	rr(t_liste *pile_a, t_liste *pile_b, int count);
+void	ra(t_liste *pile_a, int count);
+void	rb(t_liste *pile_b, int count);
+void	rr(t_liste *pile_a, t_liste *pile_b, int count);
 
 #endif

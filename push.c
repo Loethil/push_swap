@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	push_a(t_liste *pile_a, t_liste *pile_b, int count)
+void	pa(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	go_down(pile_a, count);
 	if (pile_a[0].value == 0)
@@ -22,7 +22,7 @@ void	push_a(t_liste *pile_a, t_liste *pile_b, int count)
 	go_up(pile_b, count);
 }
 
-void	push_b(t_liste *pile_a, t_liste *pile_b, int count)
+void	pb(t_liste *pile_a, t_liste *pile_b, int count)
 {
 	go_down(pile_b, count);
 	if (pile_b[0].value == 0)
