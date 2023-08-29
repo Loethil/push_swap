@@ -12,12 +12,12 @@
 #include "push_swap.h"
 
 /*probleme atoi nombre trop grand a regler*/
-void	changes(t_liste *pile_a, t_liste *pile_b, int count)
+void	changes(t_liste *pile_a, t_liste *pile_b, int len)
 {
 	int	i;
 
 	i = 0;
-	while (i < count)
+	while (i < len)
 	{
 		printf("[%d]\t\t[%d]",pile_a[i].place, pile_b[i].place);
 		printf("\n");
@@ -27,14 +27,14 @@ void	changes(t_liste *pile_a, t_liste *pile_b, int count)
 	printf(" a\t\t b\n");
 }
 
-t_liste	*create_pile_a(char **argv, int count, t_liste *pile_a)
+t_liste	*create_pile_a(char **argv, int len, t_liste *pile_a)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 1;
-	while (i < count)
+	while (i < len)
 	{
 		pile_a[i].value = ft_atoi(argv[j]);
 		j++;
@@ -43,7 +43,7 @@ t_liste	*create_pile_a(char **argv, int count, t_liste *pile_a)
 	return (pile_a);
 }
 
-void	replace_number(t_liste *pile_a, int count)
+void	replace_number(t_liste *pile_a, int len)
 {
 	int	lower;
 	int	i;
@@ -51,11 +51,11 @@ void	replace_number(t_liste *pile_a, int count)
 	int	place;
 
 	pos = 1;
-	while(pos <= count)
+	while(pos <= len)
 	{
 		i = -1;
 		lower = 2147483647;
-		while(++i < count)
+		while(++i < len)
 		{
 			if(pile_a[i].value < lower)
 			{
@@ -70,33 +70,44 @@ void	replace_number(t_liste *pile_a, int count)
 	}
 }
 
-// void	test(t_liste *pile_a, t_liste *pile_b, int count)
+// void	test(t_liste *pile_a, t_liste *pile_b, int len)
 // {
 // 	printf("\n");
-// 	sa(pile_a);
-// 	printf("sa\n\n");
-// 	changes(pile_a, pile_b, count);
+// 	pb(pile_a, pile_b, len);
+// 	printf("pb\n\n");
+// 	changes(pile_a, pile_b, len);
 // 	printf("\n");
-// 	rra(pile_a, count);
-// 	printf("rra\n\n");
-// 	changes(pile_a, pile_b, count);
+// 	pb(pile_a, pile_b, len);
+// 	printf("pb\n\n");
+// 	changes(pile_a, pile_b, len);
+// 	printf("\n");
+// 	rrr(pile_a, pile_b, len);
+// 	printf("rrb\n\n");
+// 	changes(pile_a, pile_b, len);
 // 	printf("\n");
 // }
+
 int	main(int argc, char **argv)
 {
 	t_liste	*pile_a;
 	t_liste *pile_b;
+	int	len;
 	int	count;
 
-	count = argc - 1;
+	count = 0;
+	len = argc - 1;
 	pile_a = malloc((argc - 1) * sizeof(t_liste));
 	pile_b = malloc((argc - 1) * sizeof(t_liste));
-	pile_a = create_pile_a(argv, count, pile_a);
-	replace_number(pile_a, count);
-	changes(pile_a, pile_b, count);	
-	if(count == 3)
-		algo_3(pile_a, pile_b, count);
-	changes(pile_a, pile_b, count);
-	// test(pile_a, pile_b, count);
+	pile_a = create_pile_a(argv, len, pile_a);
+	replace_number(pile_a, len);
+	changes(pile_a, pile_b, len);
+	if (len == 2)
+		algo_2(pile_a, &count);
+	if (len == 3)
+		algo_3(pile_a, len, &count);
+	if (len == 5)
+		algo_5(pile_a, pile_b, len, &count);
+	changes(pile_a, pile_b, len);
+	printf("count = %d", count);
 	return (0);
 }

@@ -11,16 +11,18 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	rra(t_liste *pile_a, int count)
+void	rra(t_liste *pile_a, int len, int *count)
 {
 	int	i;
 	int	c;
 
 	i = 0;
-	while (i < count - 1)
+	while (i < len - 1)
+	{
+		if (pile_a[i + 1].place == 0)
+			break ;
 		i++;
-	if (i > count)
-		return ;
+	}
 	c = pile_a[i].place;
 	while (i > 0)
 	{
@@ -29,18 +31,21 @@ void	rra(t_liste *pile_a, int count)
 	}
 	pile_a[0].place = c;
 	printf("rra\n");
+	(*count)++;
 }
 //-1 car argc compte de 1 a 6 et i de 0 a 5
-void	rrb(t_liste *pile_b, int count)
+void	rrb(t_liste *pile_b, int len, int *count)
 {
 	int	i;
 	int	c;
 
 	i = 0;
-	while (i < count - 1)
+	while (i < len - 1)
+	{
+		if (pile_b[i + 1].place == 0)
+			break ;
 		i++;
-	if (i > count)
-		return ;
+	}
 	c = pile_b[i].place;
 	while (i > 0)
 	{
@@ -49,10 +54,11 @@ void	rrb(t_liste *pile_b, int count)
 	}
 	pile_b[0].place = c;
 	printf("rrb\n");
+	(*count)++;
 }
-void	rrr(t_liste *pile_a, t_liste *pile_b, int count)
+void	rrr(t_liste *pile_a, t_liste *pile_b, int len, int *count)
 {
-	rra(pile_a, count);
-	rrb(pile_b, count);
+	rra(pile_a, len, count);
+	rrb(pile_b, len, count);
 	printf("rrr\n");
 }

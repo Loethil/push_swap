@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	sa(t_liste *pile_a)
+void	sa(t_liste *pile_a, int *count)
 {
 	int	c;
 
@@ -19,9 +19,10 @@ void	sa(t_liste *pile_a)
 	pile_a[1].place = pile_a[0].place;
 	pile_a[0].place = c;
 	printf("sa\n");
+	(*count)++;
 }
 
-void	sb(t_liste *pile_b)
+void	sb(t_liste *pile_b, int *count)
 {
 	int	c;
 
@@ -29,11 +30,12 @@ void	sb(t_liste *pile_b)
 	pile_b[1].place = pile_b[0].place;
 	pile_b[0].place = c;
 	printf("sb\n");
+	(*count)++;
 }
 
-void	ss(t_liste *pile_a, t_liste *pile_b)
+void	ss(t_liste *pile_a, t_liste *pile_b, int *count)
 {
-	sa(pile_a);
-	sb(pile_b);
+	sa(pile_a, count);
+	sb(pile_b, count);
 	printf("ss\n");
 }
