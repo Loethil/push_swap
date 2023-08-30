@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	ra(t_liste *pile_a, int len, int *count)
+void	ra(t_liste *pile_a, int len)
 {
 	int	i;
 	int	c;
@@ -27,10 +27,9 @@ void	ra(t_liste *pile_a, int len, int *count)
 	}
 	pile_a[i].place = c;
 	printf("ra\n");
-	(*count)++;
 }
 //-1 car argc compte de 1 a 6 et i de 0 a 5
-void	rb(t_liste *pile_b, int len, int *count)
+void	rb(t_liste *pile_b, int len)
 {
 	int	i;
 	int	c;
@@ -46,11 +45,10 @@ void	rb(t_liste *pile_b, int len, int *count)
 	}
 	pile_b[i].place = c;
 	printf("rb\n");
-	(*count)++;
 }
-void	rr(t_liste *pile_a, t_liste *pile_b, int len, int *count)
+void	rr(t_liste *pile_a, t_liste *pile_b, int len)
 {
-	ra(pile_a, len, count);
-	rb(pile_b, len, count);
+	ra(pile_a, len);
+	rb(pile_b, len);
 	printf("rr\n");
 }

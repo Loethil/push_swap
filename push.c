@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	pa(t_liste *pile_a, t_liste *pile_b, int len, int *count)
+void	pa(t_liste *pile_a, t_liste *pile_b, int len)
 {
 	go_down(pile_a, len);
 	if (pile_a[0].place == 0)
@@ -21,10 +21,9 @@ void	pa(t_liste *pile_a, t_liste *pile_b, int len, int *count)
 	}
 	go_up(pile_b, len);
 	printf("pa\n");
-	(*count)++;
 }
 
-void	pb(t_liste *pile_a, t_liste *pile_b, int len, int *count)
+void	pb(t_liste *pile_a, t_liste *pile_b, int len)
 {
 	go_down(pile_b, len);
 	if (pile_b[0].place == 0)
@@ -34,7 +33,6 @@ void	pb(t_liste *pile_a, t_liste *pile_b, int len, int *count)
 	}
 	go_up(pile_a, len);
 	printf("pb\n");
-	(*count)++;
 }
 //permet de faire descendre les maillons
 void	go_down(t_liste *pile, int len)

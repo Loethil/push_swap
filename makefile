@@ -18,7 +18,8 @@ CCC = push_swap.c\
 	push.c\
 	rotate.c\
 	reverse_rotate.c\
-	algo_3.c
+	algo_235.c\
+	algo_100.c
 
 OOO = $(CCC:.c=.o)
 

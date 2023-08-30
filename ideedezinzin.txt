@@ -10,7 +10,8 @@ idee numero 1(exemple avec l'algo de 100) :
 -> utiliser l'algo de 10 pour les nombres de 10 a 20.
 et ainsi de suite, + instaurer un compteur pour connaitre avec precision le nombre de coup effectue.
 
-algo de 3 ->  2 ou 3 
-algo de 5 ->  8 - 12
+algo de 3 -> 2 ou 3 
+algo de 5 -> 8 - 12
 algo de 100 -> 700 - 1500
 algo de 500 -> 5500 - 11500
+
