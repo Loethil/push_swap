@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	rra(t_liste *pile_a, int len)
+void	rra(t_liste *pile_a, t_struct *liste)
 {
 	int	i;
 	int	c;
 
 	i = 0;
-	while (i < len - 1)
+	while (i < liste->len - 1)
 	{
 		if (pile_a[i + 1].place == 0)
 			break ;
@@ -33,13 +33,13 @@ void	rra(t_liste *pile_a, int len)
 	printf("rra\n");
 }
 //-1 car argc compte de 1 a 6 et i de 0 a 5
-void	rrb(t_liste *pile_b, int len)
+void	rrb(t_liste *pile_b, t_struct *liste)
 {
 	int	i;
 	int	c;
 
 	i = 0;
-	while (i < len - 1)
+	while (i < liste->len - 1)
 	{
 		if (pile_b[i + 1].place == 0)
 			break ;
@@ -54,9 +54,9 @@ void	rrb(t_liste *pile_b, int len)
 	pile_b[0].place = c;
 	printf("rrb\n");
 }
-void	rrr(t_liste *pile_a, t_liste *pile_b, int len)
+void	rrr(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
-	rra(pile_a, len);
-	rrb(pile_b, len);
+	rra(pile_a, liste);
+	rrb(pile_b, liste);
 	printf("rrr\n");
 }

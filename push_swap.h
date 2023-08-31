@@ -20,27 +20,38 @@ typedef struct s_liste
 	int	place; // postions dans la liste
 }		t_liste;
 
+typedef	struct	s_struct
+{
+	int	maxchunk;
+	int	minchunk;
+	int	len;
+	int	cpt;
+	int	place;
+	int	pos;
+	int	lower;
+}		t_struct; 
+
 int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
-void	changes(t_liste *pile_a, t_liste *pile_b, int len);
-void	go_down(t_liste *pile, int len);
-void	go_up(t_liste *pile, int len);
-void	replace_number(t_liste *pile_a, int len);
-int	verif_suite(t_liste *pile_a, int len);
+void	changes(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	go_down(t_liste *pile, t_struct *liste);
+void	go_up(t_liste *pile, t_struct *liste);
+void	replace_number(t_liste *pile_a, t_struct *liste);
+int	verif_suite(t_liste *pile_a, t_struct *liste);
 void	algo_2(t_liste *pile_a);
-void	algo_3(t_liste *pile_a, int len);
-void	algo_5(t_liste *pile_a, t_liste *pile_b, int len);
-void	algo_100(t_liste *pile_a, t_liste *pile_b, int len);
+void	algo_3(t_liste *pile_a, t_struct *liste);
+void	algo_5(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	algo_100(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 void	sa(t_liste *pile_a);
 void	sb(t_liste *pile_b);
 void	ss(t_liste *pile_a, t_liste *pile_b);
-void	pa(t_liste *pile_a, t_liste *pile_b, int len);
-void	pb(t_liste *pile_a, t_liste *pile_b, int len);
-void	ra(t_liste *pile_a, int len);
-void	rb(t_liste *pile_b, int len);
-void	rr(t_liste *pile_a, t_liste *pile_b, int len);
-void	rra(t_liste *pile_a, int len);
-void	rrb(t_liste *pile_b, int len);
-void	rrr(t_liste *pile_a, t_liste *pile_b, int len);
+void	pa(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	pb(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	ra(t_liste *pile_a, t_struct *liste);
+void	rb(t_liste *pile_b, t_struct *liste);
+void	rr(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	rra(t_liste *pile_a, t_struct *liste);
+void	rrb(t_liste *pile_b, t_struct *liste);
+void	rrr(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 
 #endif

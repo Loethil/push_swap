@@ -1,104 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_100.c                                          :+:      :+:    :+:   */
+/*   algo_100.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbatteux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 13:14:18 by mbatteux          #+#    #+#             */
-/*   Updated: 2023/08/30 13:14:22 by mbatteux         ###   ########.fr       */
+/*   Created: 2023/08/31 15:28:46 by mbatteux          #+#    #+#             */
+/*   Updated: 2023/08/31 15:28:48 by mbatteux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
+#define B_TWIN pile_a[i].place >= liste->minchunk\
+	&& pile_a[i].place <= liste->maxchunk
 
-int	ra_or_rra(int nbr, int maxpile)
-{
-	if (nbr > maxpile)
-		return (1);
-	return (0);
-}
 
-void	tri(t_liste *pile_a, t_liste *pile_b, int len)
+
+void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	int	i;
-	int	maxchunk;
 
 	i = 0;
-	maxchunk = 19;
-	while (maxchunk >= 0)
+	while (liste->cpt <= liste->maxchunk)
 	{
-		if (pile_b[i].place == maxchunk && i <= 9)
+		if (B_TWIN && i <= 49)
 		{
-			while (pile_b[i].place != pile_b[0].place)
+			while (i != 0)
 			{
-				rb(pile_b, len);
+				ra(pile_a, liste);
 				i--;
 			}
-			pa(pile_a, pile_b, len);
-			i = 0;
-			maxchunk--;
+			pb(pile_a, pile_b, liste);
+			(liste->cpt)++;
 		}
-		else if (pile_b[i].place == maxchunk && i > 9)
+		if (B_TWIN && i >= 50)
 		{
-			while (pile_b[i].place != pile_b[19].place)
+			while (i != 100)
 			{
-				rrb(pile_b, len);
+				rra(pile_a, liste);
 				i++;
 			}
-			rrb(pile_b, len);
-			pa(pile_a, pile_b, len);
-			i = 0;
-			maxchunk--;
+			rra(pile_a, liste);
+			pb(pile_a, pile_b, liste);
+			i = -1;
+			(liste->cpt)++;
 		}
 		i++;
 	}
 }
 
-void	algo_100(t_liste *pile_a, t_liste *pile_b, int len)
-{
-	int	minchunk;
-	int	maxchunk;
-	int	cpt;
-	int	i;
+// void	tri_b(t_liste *pile_a, t_liste *pile_b, t_struct liste)
+// {
 
-	minchunk = 80;
-	maxchunk = 100;
-	cpt = 80;
-	i = 0;
-	while (cpt <= maxchunk)
+// }
+
+void	algo_100(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
+{
+	liste->cpt = 1;
+	liste->minchunk = 0;
+	liste->maxchunk = liste->len / 5;
+	while (liste->maxchunk <= liste->len)
 	{
-		if (pile_a[i].place >= minchunk && pile_a[i].place <= maxchunk)
-		{
-			// if (i < (len / 2))
-			// {
-				while (pile_a[i].place != pile_a[0].place)
-				{
-					ra(pile_a, len);					
-					i--;
-				}
-				pb(pile_a, pile_b, len);
-				i = 0;
-				cpt++;
-			// }
-			// else if (i >= (len / 2))
-			// {
-			// 	while (i <= 99)
-			// 	{
-			// 		rra(pile_a, len);
-			// 		i++;
-			// 	}
-			// 	rra(pile_a, len);
-			// 	pb(pile_a, pile_b, len);
-			// 	i = 0;
-			// 	cpt++;
-			// }
-		}
-		i++;
+		go_to_b(pile_a, pile_b, liste);
+		liste->maxchunk += liste->len / 5;
+		liste->minchunk += liste->len / 5;
 	}
-	tri(pile_a, pile_b, len);
-	// while (maxchunk >= minchunk)
+	// tri_b(pile_a, pile_b, liste);
+	// while (verif_suite(pile_a, liste) != 0)
 	// {
-	// 	tri(pile_a, pile_b, maxchunk, len);
-	// 	maxchunk--;
+
 	// }
 }

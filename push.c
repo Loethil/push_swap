@@ -11,38 +11,38 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	pa(t_liste *pile_a, t_liste *pile_b, int len)
+void	pa(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
-	go_down(pile_a, len);
+	go_down(pile_a, liste);
 	if (pile_a[0].place == 0)
 	{
 		pile_a[0].place = pile_b[0].place;
 		pile_b[0].place = 0;
 	}
-	go_up(pile_b, len);
+	go_up(pile_b, liste);
 	printf("pa\n");
 }
 
-void	pb(t_liste *pile_a, t_liste *pile_b, int len)
+void	pb(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
-	go_down(pile_b, len);
+	go_down(pile_b, liste);
 	if (pile_b[0].place == 0)
 	{
 		pile_b[0].place = pile_a[0].place;
 		pile_a[0].place = 0;
 	}
-	go_up(pile_a, len);
+	go_up(pile_a, liste);
 	printf("pb\n");
 }
 //permet de faire descendre les maillons
-void	go_down(t_liste *pile, int len)
+void	go_down(t_liste *pile, t_struct *liste)
 {
 	int	i;
 
 	i = 0;
-	while (i < len)
+	while (i < liste->len)
 		i++;
-	if (i > len)
+	if (i > liste->len)
 		return ;
 	while (i > 0)
 	{
@@ -52,17 +52,17 @@ void	go_down(t_liste *pile, int len)
 	pile[0].place = 0;
 }
 //permet de monterles maillons
-void	go_up(t_liste *pile, int len)
+void	go_up(t_liste *pile, t_struct *liste)
 {
 	int	i;
 
 	i = 0;
-	while (i < len - 1)
+	while (i < liste->len - 1)
 		i++;
-	if (i > len)
+	if (i > liste->len)
 		return ;
 	i = 0;
-	while (i < len - 1)
+	while (i < liste->len - 1)
 	{
 		pile[i] = pile[i + 1];
 		i++;

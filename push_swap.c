@@ -12,12 +12,12 @@
 #include "push_swap.h"
 
 /*probleme atoi nombre trop grand a regler*/
-void	changes(t_liste *pile_a, t_liste *pile_b, int len)
+void	changes(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	int	i;
 
 	i = 0;
-	while (i < len)
+	while (i < liste->len)
 	{
 		printf("[%d]\t\t[%d]",pile_a[i].place, pile_b[i].place);
 		printf("\n");
@@ -27,14 +27,14 @@ void	changes(t_liste *pile_a, t_liste *pile_b, int len)
 	printf(" a\t\t b\n");
 }
 
-t_liste	*create_pile_a(char **argv, int len, t_liste *pile_a)
+t_liste	*create_pile_a(char **argv, t_struct *liste, t_liste *pile_a)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 1;
-	while (i < len)
+	while (i < liste->len)
 	{
 		pile_a[i].value = ft_atoi(argv[j]);
 		j++;
@@ -43,54 +43,48 @@ t_liste	*create_pile_a(char **argv, int len, t_liste *pile_a)
 	return (pile_a);
 }
 
-void	replace_number(t_liste *pile_a, int len)
+void	replace_number(t_liste *pile_a, t_struct *liste)
 {
-	int	lower;
 	int	i;
-	int	pos;
-	int	place;
 
-	pos = 1;
-	while(pos <= len)
+	liste->pos = 1;
+	while(liste->pos <= liste->len)
 	{
 		i = -1;
-		lower = 2147483647;
-		while(++i < len)
+		liste->lower = 2147483647;
+		while(++i < liste->len)
 		{
-			if(pile_a[i].value < lower)
+			if(pile_a[i].value < liste->lower)
 			{
-				lower = pile_a[i].value;
-				place = i;
+				liste->lower = pile_a[i].value;
+				liste->place = i;
 				i = -1;
 			}
 		}
-		pile_a[place].place = pos;
-		pile_a[place].value = 2147483647;
-		pos++;
+		pile_a[liste->place].place = liste->pos;
+		pile_a[liste->place].value = 2147483647;
+		(liste->pos)++;
 	}
 }
 
 int	main(int argc, char **argv)
 {
 	t_liste	*pile_a;
-	t_liste *pile_b;
-	int	len;
+	t_liste	*pile_b;
+	t_struct	liste;
 
-	len = argc - 1;
+	liste.len = argc - 1;
 	pile_a = malloc((argc - 1) * sizeof(t_liste));
 	pile_b = malloc((argc - 1) * sizeof(t_liste));
-	pile_a = create_pile_a(argv, len, pile_a);
-	replace_number(pile_a, len);
-	// changes(pile_a, pile_b, len);
-	if (len == 2)
+	pile_a = create_pile_a(argv, &liste, pile_a);
+	replace_number(pile_a, &liste);
+	if (liste.len == 2)
 		algo_2(pile_a);
-	if (len == 3)
-		algo_3(pile_a, len);
-	if (len == 5)
-		algo_5(pile_a, pile_b, len);
-	if (len == 100)
-		algo_100(pile_a, pile_b, len);
-	// changes(pile_a, pile_b, len);
-	// printf("count = %d", count);
+	if (liste.len == 3)
+		algo_3(pile_a, &liste);
+	if (liste.len == 5)
+		algo_5(pile_a, pile_b, &liste);
+	if (liste.len == 100)
+		algo_100(pile_a, pile_b, &liste);
 	return (0);
 }
