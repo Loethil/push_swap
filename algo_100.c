@@ -11,19 +11,33 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#define B_TWIN pile_a[i].place >= liste->minchunk\
+#define ITAB pile_a[i].place >= liste->minchunk\
 	&& pile_a[i].place <= liste->maxchunk
+#define JTAB pile_a[j].place >= liste->minchunk\
+	&& pile_a[j].place <= liste->maxchunk
 
 
-
-void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
+int	taille(t_liste *pile_a)
 {
 	int	i;
 
 	i = 0;
+	while (pile_a[i].place != 0)
+		i++;
+	return (i - 1);
+}
+
+void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	liste->height = taille(pile_a);
+	j = liste->height;
 	while (liste->cpt <= liste->maxchunk)
 	{
-		if (B_TWIN && i <= 49)
+		if (ITAB)
 		{
 			while (i != 0)
 			{
@@ -32,27 +46,66 @@ void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 			}
 			pb(pile_a, pile_b, liste);
 			(liste->cpt)++;
+			(liste->height)--;
+			i = -1;
 		}
-		if (B_TWIN && i >= 50)
+		else if (JTAB)
 		{
-			while (i != 100)
+			while (j != liste->height)
 			{
 				rra(pile_a, liste);
-				i++;
+				j++;
 			}
 			rra(pile_a, liste);
 			pb(pile_a, pile_b, liste);
-			i = -1;
+			(liste->height)--;
 			(liste->cpt)++;
 		}
 		i++;
+		j--;
 	}
 }
 
-// void	tri_b(t_liste *pile_a, t_liste *pile_b, t_struct liste)
-// {
+void	tri_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
+{
+	int	i;
+	// int	j;
+	int	nmb;
 
-// }
+	i = 0;
+	// liste->height = taille(pile_b);
+	// j = liste->height;
+	nmb = 100;
+	while (nmb != 0)
+	{
+		if (pile_b[i].place == nmb)
+		{
+			while (i != 0)
+			{
+				rb(pile_b, liste);
+				i--;
+			}
+			pa(pile_a, pile_b, liste);
+			(liste->height)--;
+			i = -1;
+			nmb--;
+		}
+		// else if (pile_b[j].place == nmb)
+		// {
+		// 	while (j != liste->height)
+		// 	{
+		// 		rrb(pile_b, liste);
+		// 		j++;
+		// 	}
+		// 	rrb(pile_b, liste);
+		// 	pa(pile_a, pile_b, liste);
+		// 	(liste->height)--;
+		// 	nmb--;
+		// }
+		i++;
+		// j--;
+	}
+}
 
 void	algo_100(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
@@ -65,7 +118,7 @@ void	algo_100(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 		liste->maxchunk += liste->len / 5;
 		liste->minchunk += liste->len / 5;
 	}
-	// tri_b(pile_a, pile_b, liste);
+	tri_b(pile_a, pile_b, liste);
 	// while (verif_suite(pile_a, liste) != 0)
 	// {
 

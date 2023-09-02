@@ -29,6 +29,7 @@ typedef	struct	s_struct
 	int	place;
 	int	pos;
 	int	lower;
+	int	height;
 }		t_struct; 
 
 int	ft_atoi(const char *str);
