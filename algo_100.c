@@ -16,17 +16,6 @@
 #define JTAB pile_a[j].place >= liste->minchunk\
 	&& pile_a[j].place <= liste->maxchunk
 
-
-int	taille(t_liste *pile_a)
-{
-	int	i;
-
-	i = 0;
-	while (pile_a[i].place != 0)
-		i++;
-	return (i - 1);
-}
-
 void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	int	i;

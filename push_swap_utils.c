@@ -20,15 +20,12 @@ int	ft_atoi(const char *str)
 	o = 0;
 	res = 0;
 	s = 0;
-	while (str[o] == ' ' || (str[o] >= '\t' && str[o] <= '\r'))
-		o++;
-	if (str[o] == '-' || str[o] == '+')
+	if (str[o] == '-')
 	{
-		if (str[o] == '-')
-			s++;
+		s++;
 		o++;
 	}
-	while (str[o] && (ft_isdigit(str[o]) == 1))
+	while (str[o] && (ft_isdigit(str[o]) == 0))
 		res = res * 10 + str[o++] - '0';
 	if (s > 1)
 		return (0);
@@ -38,10 +35,49 @@ int	ft_atoi(const char *str)
 		return (res);
 }
 
-int	ft_isdigit(int c)
+int	taille(t_liste *pile_a)
+{
+	int	i;
+
+	i = 0;
+	while (pile_a[i].place != 0)
+		i++;
+	return (i);
+}
+
+int	diff(int a, int b)
+{
+	int	res;
+
+	res = a - b;
+	return (res);
+}
+
+int	oppenheimer(t_liste *pile_a, t_liste *pile_b)
+{
+	free (pile_a);
+	free (pile_b);
+	exit (0);
+}
+
+int	verif_argv(char *argv)
+{
+	int	i;
+
+	i = -1;
+	while (argv[++i])
+	{
+		if (argv[i] == '-')
+			i++;
+		if (!(argv[i] >= '0' && argv[i] <= '9'))
+			return (1);
+	}
+	return (0);
+}	
+
+int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
-		return (1);
-	else
 		return (0);
+	return (1);
 }

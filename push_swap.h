@@ -33,8 +33,12 @@ typedef	struct	s_struct
 }		t_struct; 
 
 int	ft_atoi(const char *str);
-int	ft_isdigit(int c);
+int	ft_isdigit(char c);
 void	changes(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+int	diff(int a, int b);
+int	taille(t_liste *pile_a);
+int	verif_argv(char *argv);
+int	oppenheimer(t_liste *pile_a, t_liste *pile_b);
 void	go_down(t_liste *pile, t_struct *liste);
 void	go_up(t_liste *pile, t_struct *liste);
 void	replace_number(t_liste *pile_a, t_struct *liste);
@@ -43,6 +47,7 @@ void	algo_2(t_liste *pile_a);
 void	algo_3(t_liste *pile_a, t_struct *liste);
 void	algo_5(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 void	algo_100(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	algo_all(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 void	sa(t_liste *pile_a);
 void	sb(t_liste *pile_b);
 void	ss(t_liste *pile_a, t_liste *pile_b);

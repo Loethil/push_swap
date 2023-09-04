@@ -11,14 +11,6 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	diff(int a, int b)
-{
-	int	res;
-
-	res = a - b;
-	return (res);
-}
-
 int	verif_suite(t_liste *pile_a, t_struct *liste)
 {
 	int	i;
