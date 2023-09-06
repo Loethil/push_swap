@@ -14,11 +14,9 @@
 void	algo(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	int	i;
-	// int	j;
 	int	nmb;
 
 	i = 0;
-	// j = taille(pile_a);
 	nmb = 1;
 	while (pile_a[i].place)
 	{
@@ -33,19 +31,7 @@ void	algo(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 			nmb++;
 			i = -1;
 		}
-		// else if (pile_a[j].place == liste->height)
-		// {
-		// 	while (j != nmb)
-		// 	{
-		// 		rra(pile_a, liste);
-		// 		j++;
-		// 	}
-		// 	rra(pile_a, liste);
-		// 	pb(pile_a, pile_b, liste);
-		// 	nmb++;
-		// }
 		i++;
-		// j--;
 	}
 }
 
@@ -55,7 +41,7 @@ void	tri(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 	int	nmb;
 
 	i = 0;
-	nmb = taille(pile_b);
+	nmb = taille(pile_b) + 1;
 	while (nmb != 0)
 	{
 		if (pile_b[i].place == nmb)
@@ -72,6 +58,7 @@ void	tri(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 		i++;
 	}
 }
+
 void	algo_all(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	algo(pile_a, pile_b, liste);

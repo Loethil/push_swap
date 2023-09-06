@@ -42,7 +42,7 @@ int	taille(t_liste *pile_a)
 	i = 0;
 	while (pile_a[i].place != 0)
 		i++;
-	return (i);
+	return (i - 1);
 }
 
 int	diff(int a, int b)
@@ -73,7 +73,7 @@ int	verif_argv(char *argv)
 			return (1);
 	}
 	return (0);
-}	
+}
 
 int	ft_isdigit(char c)
 {

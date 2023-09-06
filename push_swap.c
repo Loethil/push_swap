@@ -19,7 +19,7 @@ void	changes(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 	i = 0;
 	while (i < liste->len)
 	{
-		printf("[%d]\t\t[%d]",pile_a[i].place, pile_b[i].place);
+		printf("[%d]\t\t[%d]", pile_a[i].place, pile_b[i].place);
 		printf("\n");
 		i++;
 	}
@@ -47,7 +47,6 @@ t_liste	*create_pile_a(char **argv, t_struct *liste, t_liste *pile_a, t_liste *p
 			printf("ERROR\nLETTRES INTERDITES");
 			oppenheimer(pile_a, pile_b);
 		}
-
 	}
 	return (pile_a);
 }
@@ -57,13 +56,13 @@ void	replace_number(t_liste *pile_a, t_struct *liste)
 	int	i;
 
 	liste->pos = 1;
-	while(liste->pos <= liste->len)
+	while (liste->pos <= liste->len)
 	{
 		i = -1;
 		liste->lower = 2147483647;
-		while(++i < liste->len)
+		while (++i < liste->len)
 		{
-			if(pile_a[i].value < liste->lower)
+			if (pile_a[i].value < liste->lower)
 			{
 				liste->lower = pile_a[i].value;
 				liste->place = i;
@@ -78,8 +77,8 @@ void	replace_number(t_liste *pile_a, t_struct *liste)
 
 int	main(int argc, char **argv)
 {
-	t_liste	*pile_a;
-	t_liste	*pile_b;
+	t_liste		*pile_a;
+	t_liste		*pile_b;
 	t_struct	liste;
 
 	liste.len = argc - 1;

@@ -29,6 +29,7 @@ void	ra(t_liste *pile_a, t_struct *liste)
 	printf("ra\n");
 }
 //-1 car argc compte de 1 a 6 et i de 0 a 5
+
 void	rb(t_liste *pile_b, t_struct *liste)
 {
 	int	i;
@@ -46,6 +47,7 @@ void	rb(t_liste *pile_b, t_struct *liste)
 	pile_b[i].place = c;
 	printf("rb\n");
 }
+
 void	rr(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	ra(pile_a, liste);

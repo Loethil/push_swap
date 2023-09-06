@@ -11,22 +11,20 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#define ITAB pile_a[i].place >= liste->minchunk\
-	&& pile_a[i].place <= liste->maxchunk
-#define JTAB pile_a[j].place >= liste->minchunk\
-	&& pile_a[j].place <= liste->maxchunk
+
 
 void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
-	int	i;
 	int	j;
+	int	i;
 
-	i = 0;
 	liste->height = taille(pile_a);
 	j = liste->height;
+	i = 0;
 	while (liste->cpt <= liste->maxchunk)
 	{
-		if (ITAB)
+		if (pile_a[i].place >= liste->minchunk
+			&& pile_a[i].place <= liste->maxchunk)
 		{
 			while (i != 0)
 			{
@@ -34,11 +32,12 @@ void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 				i--;
 			}
 			pb(pile_a, pile_b, liste);
-			(liste->cpt)++;
 			(liste->height)--;
+			(liste->cpt)++;
 			i = -1;
 		}
-		else if (JTAB)
+		else if (pile_a[j].place >= liste->minchunk
+			&& pile_a[j].place <= liste->maxchunk)
 		{
 			while (j != liste->height)
 			{
@@ -47,8 +46,8 @@ void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 			}
 			rra(pile_a, liste);
 			pb(pile_a, pile_b, liste);
-			(liste->height)--;
 			(liste->cpt)++;
+			(liste->height)--;
 		}
 		i++;
 		j--;
@@ -58,16 +57,16 @@ void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 void	tri_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	int	i;
-	// int	j;
-	int	nmb;
+	int	j;
+	int	nbr;
 
 	i = 0;
-	// liste->height = taille(pile_b);
-	// j = liste->height;
-	nmb = 100;
-	while (nmb != 0)
+	liste->height = taille(pile_b);
+	j = liste->height;
+	nbr = 100;
+	while (nbr >= 1)
 	{
-		if (pile_b[i].place == nmb)
+		if (pile_b[i].place == nbr)
 		{
 			while (i != 0)
 			{
@@ -75,27 +74,28 @@ void	tri_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 				i--;
 			}
 			pa(pile_a, pile_b, liste);
+			j = liste->height;
 			(liste->height)--;
 			i = -1;
-			nmb--;
+			nbr--;
 		}
-		// else if (pile_b[j].place == nmb)
-		// {
-		// 	while (j != liste->height)
-		// 	{
-		// 		rrb(pile_b, liste);
-		// 		j++;
-		// 	}
-		// 	rrb(pile_b, liste);
-		// 	pa(pile_a, pile_b, liste);
-		// 	(liste->height)--;
-		// 	nmb--;
-		// }
+		else if (pile_b[j].place == nbr)
+		{
+			while (j != liste->height)
+			{
+				rrb(pile_b, liste);
+				j++;
+			}
+			rrb(pile_b, liste);
+			pa(pile_a, pile_b, liste);
+			i = -1;
+			(liste->height)--;
+			nbr--;
+		}
 		i++;
-		// j--;
+		j--;
 	}
 }
-
 void	algo_100(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	liste->cpt = 1;
@@ -108,8 +108,4 @@ void	algo_100(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 		liste->minchunk += liste->len / 5;
 	}
 	tri_b(pile_a, pile_b, liste);
-	// while (verif_suite(pile_a, liste) != 0)
-	// {
-
-	// }
 }

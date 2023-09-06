@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_235.c                                           :+:      :+:    :+:   */
+/*   algo_235.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbatteux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 13:58:52 by mbatteux          #+#    #+#             */
-/*   Updated: 2023/08/28 13:58:54 by mbatteux         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:23:12 by mbatteux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -14,9 +14,9 @@
 int	verif_suite(t_liste *pile_a, t_struct *liste)
 {
 	int	i;
-	
+
 	i = 0;
-	while(i < liste->len - 1)
+	while (i < liste->len - 1)
 	{
 		if (pile_a[i].place != (i + 1))
 			return (1);
@@ -82,5 +82,5 @@ void	algo_5(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 	pa(pile_a, pile_b, liste);
 	pa(pile_a, pile_b, liste);
 	ra(pile_a, liste);
-	ra(pile_a, liste);	
+	ra(pile_a, liste);
 }

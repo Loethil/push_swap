@@ -35,6 +35,7 @@ void	pb(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 	printf("pb\n");
 }
 //permet de faire descendre les maillons
+
 void	go_down(t_liste *pile, t_struct *liste)
 {
 	int	i;
@@ -52,6 +53,7 @@ void	go_down(t_liste *pile, t_struct *liste)
 	pile[0].place = 0;
 }
 //permet de monterles maillons
+
 void	go_up(t_liste *pile, t_struct *liste)
 {
 	int	i;
