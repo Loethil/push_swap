@@ -30,6 +30,9 @@ typedef	struct	s_struct
 	int	pos;
 	int	lower;
 	int	height;
+	int	f;
+	int	e;
+	int	nbr;
 }		t_struct; 
 
 int	ft_atoi(const char *str);
@@ -47,7 +50,12 @@ void	algo_2(t_liste *pile_a);
 void	algo_3(t_liste *pile_a, t_struct *liste);
 void	algo_5(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 void	algo_100(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	algo_500(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 void	algo_all(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	end_to_a(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	first_to_a(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	first_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	end_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 void	sa(t_liste *pile_a);
 void	sb(t_liste *pile_b);
 void	ss(t_liste *pile_a, t_liste *pile_b);

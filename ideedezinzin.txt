@@ -112,37 +112,83 @@ void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 
 
 
-// int	itab(t_liste *pile_a, t_liste *pile_b,
-// 	t_struct *liste, int i, int j)
-// {
-// 	j = liste->height;
-// 	while (i != 0)
-// 	{
-// 		ra(pile_a, liste);
-// 		i--;
-// 	}
-// 	pb(pile_a, pile_b, liste);
-// 	(liste->height)--;
-// 	(liste->cpt)++;
-// 	i = -1;
-// 	return (j);
-// }
+void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
+{
+	int	j;
+	int	i;
 
-// int	jtab(t_liste *pile_a, t_liste *pile_b,
-// 	t_struct *liste, int j, int i)
-// {
-// 	while (j != liste->height)
-// 	{
-// 		rra(pile_a, liste);
-// 		j++;
-// 	}
-// 	rra(pile_a, liste);
-// 	pb(pile_a, pile_b, liste);
-// 	(liste->cpt)++;
-// 	(liste->height)--;
-// 	i = -1;
-// 	return (i);
-// }
+	liste->height = taille(pile_a);
+	j = liste->height;
+	i = 0;
+	while (liste->cpt <= liste->maxchunk)
+	{
+		if (pile_a[i].place >= liste->minchunk
+			&& pile_a[i].place <= liste->maxchunk)
+		{
+			while (i != 0)
+			{
+				ra(pile_a, liste);
+				i--;
+			}
+			pb(pile_a, pile_b, liste);
+			(liste->height)--;
+			(liste->cpt)++;
+			i = -1;
+		}
+		else if (pile_a[j].place >= liste->minchunk
+			&& pile_a[j].place <= liste->maxchunk)
+		{
+			while (j != liste->height)
+			{
+				rra(pile_a, liste);
+				j++;
+			}
+			rra(pile_a, liste);
+			pb(pile_a, pile_b, liste);
+			(liste->cpt)++;
+			(liste->height)--;
+		}
+		i++;
+		j--;
+	}
+}
+
+	liste->f = 0;
+	liste->height = taille(pile_b);
+	liste->e = liste->height;
+	liste->nbr = 100;
+	while (liste->nbr >= 1)
+	{
+		if (pile_b[liste->f].place == liste->nbr)
+		{
+			while (liste->f!= 0)
+			{
+				rb(pile_b, liste);
+				(liste->f)--;
+			}
+			pa(pile_a, pile_b, liste);
+			liste->e = liste->height;
+			(liste->height)--;
+			liste->f = -1;
+			(liste->nbr)--;
+		}
+		else if (pile_b[liste->e].place == liste->nbr)
+		{
+			while (liste->e != liste->height)
+			{
+				rrb(pile_b, liste);
+				(liste->e)++;
+			}
+			rrb(pile_b, liste);
+			pa(pile_a, pile_b, liste);
+			liste->f = -1;
+			(liste->height)--;
+			(liste->nbr)--;
+		}
+		(liste->f)++;
+		(liste->e)--;
+	}
+
 
 	// 	if (pile_a[i].place >= liste->minchunk
 	// && pile_a[i].place <= liste->maxchunk)

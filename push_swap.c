@@ -27,7 +27,8 @@ void	changes(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 	printf(" a\t\t b\n");
 }
 
-t_liste	*create_pile_a(char **argv, t_struct *liste, t_liste *pile_a, t_liste *pile_b)
+t_liste	*create_pile_a(char **argv, t_struct *liste,
+	t_liste *pile_a, t_liste *pile_b)
 {
 	int	j;
 	int	i;
@@ -88,14 +89,16 @@ int	main(int argc, char **argv)
 	replace_number(pile_a, &liste);
 	if (liste.len < 1)
 		return (0);
-	if (liste.len == 2)
+	else if (liste.len == 2)
 		algo_2(pile_a);
-	if (liste.len == 3)
+	else if (liste.len == 3)
 		algo_3(pile_a, &liste);
-	if (liste.len == 5)
+	else if (liste.len == 5)
 		algo_5(pile_a, pile_b, &liste);
-	if (liste.len == 100)
+	else if (liste.len == 100)
 		algo_100(pile_a, pile_b, &liste);
+	else if (liste.len == 500)
+		algo_500(pile_a, pile_b, &liste);
 	else
 		algo_all(pile_a, pile_b, &liste);
 	return (0);
