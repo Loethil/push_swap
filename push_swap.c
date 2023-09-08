@@ -37,17 +37,20 @@ t_liste	*create_pile_a(char **argv, t_struct *liste,
 	i = 0;
 	while (i < liste->len)
 	{
-		if (verif_argv(argv[j]) == 0)
+		if ((verif_argv(argv[j]) == 1))
 		{
-			pile_a[i].value = ft_atoi(argv[j]);
-			j++;
-			i++;
-		}
-		else if (verif_argv(argv[j]) == 1)
-		{
-			printf("ERROR\nLETTRES INTERDITES");
+			printf("ERROR\n");
 			oppenheimer(pile_a, pile_b);
 		}
+		else if ((ft_atoi(argv[j]) > 2147483647)
+			|| (ft_atoi(argv[j]) < -2147483648))
+		{
+			printf("ERROR\n");
+			oppenheimer(pile_a, pile_b);
+		}
+		else if (verif_argv(argv[j]) == 0)
+			pile_a[i].value = ft_atoi(argv[j++]);
+		i++;
 	}
 	return (pile_a);
 }
@@ -60,7 +63,7 @@ void	replace_number(t_liste *pile_a, t_struct *liste)
 	while (liste->pos <= liste->len)
 	{
 		i = -1;
-		liste->lower = 2147483647;
+		liste->lower = 2147483648;
 		while (++i < liste->len)
 		{
 			if (pile_a[i].value < liste->lower)
@@ -83,14 +86,13 @@ int	main(int argc, char **argv)
 	t_struct	liste;
 
 	liste.len = argc - 1;
-	pile_a = malloc((argc - 1) * sizeof(t_liste));
-	pile_b = malloc((argc - 1) * sizeof(t_liste));
+	pile_a = malloc((argc) * sizeof(t_liste));
+	pile_b = calloc(sizeof(t_liste), (argc));
 	pile_a = create_pile_a(argv, &liste, pile_a, pile_b);
+	check_duplicate(pile_a, pile_b, &liste);
 	replace_number(pile_a, &liste);
 	if (liste.len < 1)
 		return (0);
-	else if (liste.len == 2)
-		algo_2(pile_a);
 	else if (liste.len == 3)
 		algo_3(pile_a, &liste);
 	else if (liste.len == 5)
@@ -101,5 +103,6 @@ int	main(int argc, char **argv)
 		algo_500(pile_a, pile_b, &liste);
 	else
 		algo_all(pile_a, pile_b, &liste);
+	oppenheimer(pile_a, pile_b);
 	return (0);
 }

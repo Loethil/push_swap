@@ -26,6 +26,33 @@ int	verif_argv(char *argv)
 	return (0);
 }
 
+void	check_duplicate(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
+{
+	int	i;
+	int	j;
+	int	c;
+
+	i = 0;
+	j = 0;
+	while (j < liste->len)
+	{
+		c = pile_a[j].value;
+		while (i < liste->len)
+		{
+			if (i == j)
+				i++;
+			if (c == pile_a[i].value)
+			{
+				printf("ERROR\n");
+				oppenheimer(pile_a, pile_b);
+			}
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+}
+
 int	ft_isdigit(char c)
 {
 	if (c >= '0' && c <= '9')

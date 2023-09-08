@@ -23,7 +23,8 @@ CCC = push_swap.c\
 	algo_500.c\
 	algo_all.c\
 	tri_algo_100.c\
-	utils.c
+	utils.c\
+	ft_calloc.c
 
 OOO = $(CCC:.c=.o)
 

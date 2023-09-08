@@ -28,19 +28,20 @@ typedef	struct	s_struct
 	int	cpt;
 	int	place;
 	int	pos;
-	int	lower;
+	long int	lower;
 	int	height;
 	int	f;
 	int	e;
 	int	nbr;
 }		t_struct; 
 
-int	ft_atoi(const char *str);
+long int	ft_atoi(const char *str);
 int	ft_isdigit(char c);
 void	changes(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 int	diff(int a, int b);
 int	taille(t_liste *pile_a);
 int	verif_argv(char *argv);
+void	check_duplicate(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 int	oppenheimer(t_liste *pile_a, t_liste *pile_b);
 void	go_down(t_liste *pile, t_struct *liste);
 void	go_up(t_liste *pile, t_struct *liste);

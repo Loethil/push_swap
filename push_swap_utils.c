@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
-	int	o;
-	int	res;
-	int	s;
+	int			o;
+	long int	res;
+	int			s;
 
 	o = 0;
 	res = 0;
@@ -35,12 +35,12 @@ int	ft_atoi(const char *str)
 		return (res);
 }
 
-int	taille(t_liste *pile_a)
+int	taille(t_liste *pile)
 {
 	int	i;
 
 	i = 0;
-	while (pile_a[i].place != 0)
+	while (pile[i].place != 0)
 		i++;
 	return (i - 1);
 }
