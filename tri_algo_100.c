@@ -17,12 +17,13 @@ void	first_to_b(t_liste *pile_a, t_liste *pile_b,
 	while (liste->f != 0)
 	{
 		ra(pile_a, liste);
-		liste->f--;
+		(liste->f)--;
 	}
 	pb(pile_a, pile_b, liste);
+	liste->f = -1;
+	liste->e = liste->height;
 	(liste->height)--;
 	(liste->cpt)++;
-	liste->f = -1;
 }
 
 void	end_to_b(t_liste *pile_a, t_liste *pile_b,
@@ -35,8 +36,10 @@ void	end_to_b(t_liste *pile_a, t_liste *pile_b,
 	}
 	rra(pile_a, liste);
 	pb(pile_a, pile_b, liste);
-	(liste->cpt)++;
+	liste->f = -1;
+	liste->e = liste->height;
 	(liste->height)--;
+	(liste->cpt)++;
 }
 
 void	first_to_a(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
@@ -47,9 +50,9 @@ void	first_to_a(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 		(liste->f)--;
 	}
 	pa(pile_a, pile_b, liste);
+	liste->f = -1;
 	liste->e = liste->height;
 	(liste->height)--;
-	liste->f = -1;
 	(liste->nbr)--;
 }
 
@@ -63,6 +66,7 @@ void	end_to_a(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 	rrb(pile_b, liste);
 	pa(pile_a, pile_b, liste);
 	liste->f = -1;
+	liste->e = liste->height;
 	(liste->height)--;
 	(liste->nbr)--;
 }

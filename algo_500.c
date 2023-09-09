@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+#define CHUNK 13
 
 void	go_to_b_500(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
@@ -46,16 +47,29 @@ void	tri_b_500(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 	}
 }
 
+void	gob(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
+{
+	int	i;
+
+	i = taille(pile_a);
+	while (i >= 0)
+	{
+		pb(pile_a, pile_b, liste);
+		i--;
+	}
+}
+
 void	algo_500(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	liste->cpt = 1;
 	liste->minchunk = 0;
-	liste->maxchunk = liste->len / 10;
+	liste->maxchunk = liste->len / CHUNK;
 	while (liste->maxchunk <= liste->len)
 	{
 		go_to_b_500(pile_a, pile_b, liste);
-		liste->maxchunk += liste->len / 10;
-		liste->minchunk += liste->len / 10;
+		liste->maxchunk += liste->len / CHUNK;
+		liste->minchunk += liste->len / CHUNK;
 	}
+	gob(pile_a, pile_b, liste);
 	tri_b_500(pile_a, pile_b, liste);
 }

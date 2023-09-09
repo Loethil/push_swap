@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+#define CHUNK 6
 
 void	go_to_b(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
@@ -50,12 +51,13 @@ void	algo_100(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
 	liste->cpt = 1;
 	liste->minchunk = 0;
-	liste->maxchunk = liste->len / 5;
+	liste->maxchunk = liste->len / CHUNK;
 	while (liste->maxchunk <= liste->len)
 	{
 		go_to_b(pile_a, pile_b, liste);
-		liste->maxchunk += liste->len / 5;
-		liste->minchunk += liste->len / 5;
+		liste->maxchunk += liste->len / CHUNK;
+		liste->minchunk += liste->len / CHUNK;
 	}
+	gob(pile_a, pile_b, liste);
 	tri_b(pile_a, pile_b, liste);
 }

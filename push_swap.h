@@ -42,6 +42,7 @@ int	diff(int a, int b);
 int	taille(t_liste *pile_a);
 int	verif_argv(char *argv);
 void	check_duplicate(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
+void	gob(t_liste *pile_a, t_liste *pile_b, t_struct *liste);
 int	oppenheimer(t_liste *pile_a, t_liste *pile_b);
 void	go_down(t_liste *pile, t_struct *liste);
 void	go_up(t_liste *pile, t_struct *liste);
