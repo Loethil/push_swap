@@ -20,7 +20,7 @@ void	pa(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 		pile_b[0].place = 0;
 	}
 	go_up(pile_b, liste);
-	printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
@@ -32,7 +32,7 @@ void	pb(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 		pile_a[0].place = 0;
 	}
 	go_up(pile_a, liste);
-	printf("pb\n");
+	write(1, "pb\n", 3);
 }
 //permet de faire descendre les maillons
 

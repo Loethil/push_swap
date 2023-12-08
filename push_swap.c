@@ -11,22 +11,6 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-/*probleme atoi nombre trop grand a regler*/
-void	changes(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
-{
-	int	i;
-
-	i = 0;
-	while (i < liste->len)
-	{
-		printf("[%d]\t\t[%d]", pile_a[i].place, pile_b[i].place);
-		printf("\n");
-		i++;
-	}
-	printf(" _\t\t _\n");
-	printf(" a\t\t b\n");
-}
-
 t_liste	*create_pile_a(char **argv, t_struct *liste,
 	t_liste *pile_a, t_liste *pile_b)
 {
@@ -39,13 +23,13 @@ t_liste	*create_pile_a(char **argv, t_struct *liste,
 	{
 		if ((verif_argv(argv[j]) == 1))
 		{
-			printf("ERROR\n");
+			write(1, "ERROR\n", 6);
 			oppenheimer(pile_a, pile_b);
 		}
 		else if ((ft_atoi(argv[j]) > 2147483647)
 			|| (ft_atoi(argv[j]) < -2147483648))
 		{
-			printf("ERROR\n");
+			write(1, "ERROR\n", 6);
 			oppenheimer(pile_a, pile_b);
 		}
 		else if (verif_argv(argv[j]) == 0)
@@ -92,7 +76,7 @@ int	main(int argc, char **argv)
 	check_duplicate(pile_a, pile_b, &liste);
 	replace_number(pile_a, &liste);
 	if (liste.len < 1)
-		return (0);
+		oppenheimer(pile_a, pile_b);
 	else if (liste.len == 3)
 		algo_3(pile_a, &liste);
 	else if (liste.len == 5)

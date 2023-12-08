@@ -41,9 +41,9 @@ void	check_duplicate(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 		{
 			if (i == j)
 				i++;
-			if (c == pile_a[i].value)
+			else if (c == pile_a[i].value)
 			{
-				printf("ERROR\n");
+				write(1, "ERROR\n", 6);
 				oppenheimer(pile_a, pile_b);
 			}
 			i++;

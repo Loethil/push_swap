@@ -18,7 +18,7 @@ void	sa(t_liste *pile_a)
 	c = pile_a[1].place;
 	pile_a[1].place = pile_a[0].place;
 	pile_a[0].place = c;
-	printf("sa\n");
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_liste *pile_b)
@@ -28,12 +28,12 @@ void	sb(t_liste *pile_b)
 	c = pile_b[1].place;
 	pile_b[1].place = pile_b[0].place;
 	pile_b[0].place = c;
-	printf("sb\n");
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_liste *pile_a, t_liste *pile_b)
 {
 	sa(pile_a);
 	sb(pile_b);
-	printf("ss\n");
+	write(1, "ss\n", 3);
 }

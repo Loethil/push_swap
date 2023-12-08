@@ -64,6 +64,8 @@ void	algo_500(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 	liste->cpt = 1;
 	liste->minchunk = 0;
 	liste->maxchunk = liste->len / CHUNK;
+	if (verif_suite(pile_a, liste) == 0)
+		return ;
 	while (liste->maxchunk <= liste->len)
 	{
 		go_to_b_500(pile_a, pile_b, liste);

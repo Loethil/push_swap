@@ -61,6 +61,8 @@ void	tri(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 
 void	algo_all(t_liste *pile_a, t_liste *pile_b, t_struct *liste)
 {
+	if (verif_suite(pile_a, liste) == 0)
+		return ;
 	algo(pile_a, pile_b, liste);
 	tri(pile_a, pile_b, liste);
 }
