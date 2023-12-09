@@ -19,13 +19,12 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <errno.h>
+# include <stdlib.h>
 # include "libft.h"
 
 typedef struct s_cmd
 {
 	int		num;
-	int		rd;
-	int		wrt;
 	char	**argv;
 	char	*true_path;
 }			t_cmd;
@@ -33,25 +32,14 @@ typedef struct s_cmd
 typedef struct s_data
 {
 	char	**all_path;
-	char	*true_path;
 	int		nbr;
-	int		pipe_fd[2];
 	pid_t	*pid;
-	int		fdin;
-	int		fdout;
-	t_cmd 	*cmd;
 }		t_data;
 
 
-void	find_path(t_data *pip, char **env);
-void	free_tabs(char **tab);
-char	*theword(int *i, const char *s, char c);
-char	*get_access(t_data *pip, t_cmd *cmd, char *argv);
-int		countword(char const *s, char c);
-void	oppenheimer(t_data *pip);
-void	error(char *err, t_data *pip);
+void	find_path(t_data *pip);
+char	*get_access(t_data *pip, char *argv);
 // void	proc_1(t_data *pip, char **env, char **argv, int *pipe_fd);
 // void	proc_2(t_data *pip, char **env, char **argv, int *pipe_fd);
-void	free_argv(t_data *pip);
 
 #endif

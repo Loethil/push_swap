@@ -11,39 +11,14 @@
 /* ************************************************************************** */
 #include "pipex.h"
 
-void	free_tabs(char **tab)
+void	find_path(t_data *pip)
 {
-	int	i;
+	char 	*path;
+	int		i;
 
 	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
-
-void	error(char *err, t_data *pip)
-{
-	(void)pip;
-	write(1, err, ft_strlen(err));
-	exit(1);
-}
-
-void	find_path(t_data *pip, char **env)
-{
-	int	i;
-
-	i = 0;
-	while (env[i])
-	{
-		if (ft_strncmp(env[i], "PATH=", 5) == 0)
-			break ;
-		i++;
-	}
-	pip->all_path = ft_split(env[i] + 5, ':');
-	i = 0;
+	path = getenv("PATH");
+	pip->all_path = ft_split(path, ':');
 	while (pip->all_path[i])
 	{
 		pip->all_path[i] = ft_strjoin(pip->all_path[i], "/");
@@ -51,24 +26,21 @@ void	find_path(t_data *pip, char **env)
 	}
 }
 
-char	*get_access(t_data *pip, t_cmd *cmd, char *argv)
+char	*get_access(t_data *pip, char *str)
 {
-	int	i;
-
+	char	*tab;
+	int		i;
 	i = 0;
-	if (access(argv, X_OK) == 0)
-		return (argv);
+	if (access(str, X_OK) == 0)
+		return (str);
 	while (pip->all_path[i])
 	{
-		cmd->true_path = ft_strjoin(pip->all_path[i], argv);
-		if (access(cmd->true_path, X_OK) == 0)
-			return (cmd->true_path);
-		free(cmd->true_path);
+		tab = ft_strjoin(pip->all_path[i], str);
+		if (access(tab, X_OK) == 0)
+			return (tab);
+		free(tab);
 		i++;
 	}
-	free_tabs(cmd->argv);
-	free_tabs(cmd->argv);
-	free(pip->all_path);
 	write (1, "command not found\n", 18);
 	exit(1);
 }
